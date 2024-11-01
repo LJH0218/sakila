@@ -9,15 +9,18 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <style>
-	.container {background-color: #000;}
+	.container {background-color: #212529;}
 	* {color:#666; text-decoration: none; }
 	h1 {color:#666; text-align: center;transition: all 0.4s;}
-	.bgc {background-color: #fff; padding: 20px; border-radius: 15px; margin-top: 50%; text-align: center;}
-	h1:hover {color:#000;}
+	.bgc {background-color: #333; padding: 20px; border-radius: 15px; margin-top: 50%; text-align: center;}
+	h1:hover {color:#212529;}
 	.loginbox {text-align: left;}
 	.form-control::placeholder {
-  		color: #ccc;
+  		color: #666;
 }
+	.bgc input {background-color: #212529; border: 1px solid #666; color:#666;}
+	.form-control:focus {background-color: #333; border-color: #666; box-shadow:none; color:#666;}
+	.btn {color:#666;}
 
 </style>
 <title>Insert title here</title>
