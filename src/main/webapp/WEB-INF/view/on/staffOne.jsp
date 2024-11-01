@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-sm-10">
 			<!-- 메인 컨텐츠 -->
-			<h1>MAIN TITLE</h1>
+			<h1>StaffOne</h1>
 		</div>
 	</div>
 </body>

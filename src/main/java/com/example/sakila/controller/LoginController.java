@@ -14,18 +14,33 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 
+
+
 @Slf4j
 @Controller
 public class LoginController {
 	@Autowired private StaffMapper staffMapper;
+	// 메소드에 직접 매핑 = 다중요청 가능 / 매핑주소 중복 조심(인터페이스 설계에 집중!)
+	// @Autowired private ; 
 	
+
+	
+	@GetMapping("/on/logout")
+		public String logout(HttpSession session) { // 가장 효과적인 서블릿인 동시에 많이 쓰이는 방식 (세션부여)
+			session.invalidate(); // 세션종료
+			log.debug("로그아웃 성공");
+			return "redirect:/off/login";
+		}
+	
+	
+	// 로그인 폼
 	
 	@GetMapping("/off/login")
 	public String login() {
 		log.debug("/off/login 실행됨.");
 		return "off/login";
 	}
-	
+	// 로그인 액션
 	@PostMapping("/off/login")
 	public String login(Model model
 			, HttpSession session
@@ -49,5 +64,5 @@ public class LoginController {
 		return "redirect:/on/main";
 	}
 	
-
+	// 로그아웃 폼
 }

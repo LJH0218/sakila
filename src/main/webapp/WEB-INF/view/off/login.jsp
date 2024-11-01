@@ -8,22 +8,55 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
+<style>
+	.container {background-color: #000;}
+	* {color:#666; text-decoration: none; }
+	h1 {color:#666; text-align: center;transition: all 0.4s;}
+	.bgc {background-color: #fff; padding: 20px; border-radius: 15px; margin-top: 50%; text-align: center;}
+	h1:hover {color:#000;}
+	.loginbox {text-align: left;}
+	.form-control::placeholder {
+  		color: #ccc;
+}
+
+</style>
 <title>Insert title here</title>
+
+
 </head>
-<body class="container">
-	<h1>staff login <span>${msg}</span></h1>
+<body class="container col-sm-3">
+
 	
-	<form action="${pageContext.request.contextPath}/off/login" method="post">
-		  <div class="mb-3 mt-3">
-		    <label for="staffId" class="form-label">staffId:</label>
-		    <input type="text" class="form-control" id="staffId" name="staffId">
+	<form class="bgc" id="form" action="${pageContext.request.contextPath}/off/login" method="post">
+		<h1>STAFF-LOGIN</h1>
+		<hr>
+		<small>${msg}</small>
+		  <div class="mb-3 mt-3 loginbox">
+		    <label class="form-label" for="staffId"> Staff-Num </label>
+		    <input class="form-control" id="staffId" placeholder="Staff-Num" name="staffId" type="text">
 		  </div>
-		  <div class="mb-3">
-		    <label for="password" class="form-label">Password:</label>
-		    <input type="password" class="form-control" id="password" name="password">
+		  <div class="mb-3 loginbox">
+		    <label class="form-label" for="password"> Password </label>
+		    <input  id="password" name="password" placeholder="Password" type="password" class="form-control">
 		  </div>
-	  <button type="submit" class="btn btn-primary">로그인</button>
+	  <button id="btn" type="button" class="btn btn-dark justify-content-center">로그인</button>
 	</form>
 	
 </body>
+
+<script>
+	// btn 버튼 클릭시 폼값 유효성 검사
+	
+	$('#btn').click(function(){
+		console.log('click');
+		// 숫자가 아니면 isNaN() or $.isNumeric()
+		if($.isNumeric($('#staffId').val()) == false){
+			alert('StaffId는 숫자만 입력 가능합니다.');
+		} else if ($('#password').val().length < 4){
+			alert('Password는 4자 이상 입력하셔야합니다.');
+		} else {
+		$('#form').submit();
+		}
+	});
+</script>
 </html>
