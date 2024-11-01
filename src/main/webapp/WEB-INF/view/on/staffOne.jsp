@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <style>
 	.row *{ padding-left: 0; padding-right: 0; background-color: #212529; color:#fff; text-decoration: none;}
-	.bg-light{background-color: #212529;}
 	.col-sm-2{padding: 0 2%; border-right: 1px solid #333;}
 	.main-list{margin-top: 30%;}
 	.list-group-item {border:1px solid #333; padding: 0; }

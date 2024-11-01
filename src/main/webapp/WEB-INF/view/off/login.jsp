@@ -13,13 +13,13 @@
 	* {color:#666; text-decoration: none; }
 	h1 {color:#666; text-align: center;transition: all 0.4s;}
 	.bgc {background-color: #333; padding: 20px; border-radius: 15px; margin-top: 50%; text-align: center;}
-	h1:hover {color:#212529;}
+	h1:hover {color:#fff;}
 	.loginbox {text-align: left;}
 	.form-control::placeholder {
   		color: #666;
 }
 	.bgc input {background-color: #212529; border: 1px solid #666; color:#666;}
-	.form-control:focus {background-color: #333; border-color: #666; box-shadow:none; color:#666;}
+	.form-control:focus {background-color: #333; border-color: #666; box-shadow:none; color:#fff;}
 	.btn {color:#666;}
 
 </style>
