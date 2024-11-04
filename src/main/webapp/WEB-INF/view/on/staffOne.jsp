@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <style>
-	.row *{ padding-left: 0; padding-right: 0; background-color: #212529; color:#fff; text-decoration: none;}
+	* {background-color: #212529;}
+	.row *{ padding-left: 0; padding-right: 0; color:#fff; text-decoration: none;}
 	.col-sm-2{padding: 0 2%; border-right: 1px solid #333;}
+	.col-sm-10{padding: 0 5%;}
+	.titlebox{padding-bottom: 50px;}
 	.main-list{margin-top: 30%;}
 	.list-group-item {border:1px solid #333; padding: 0; }
 	.main-list a {display: block; padding: 5%; color:#666;}
@@ -19,7 +22,7 @@
 </head>
 
 <body class="container-flud">
-	<div class="row">
+	<div class="row mt-3">
 		<div class="col-sm-2">
 			<!-- 레프트메뉴 인클루드 -->
 			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
@@ -28,7 +31,9 @@
 			<!-- 메인 컨텐츠 -->
 		
 	<div class="container mt-3">
-		<h1>${loginStaff.username}님 어서오세요.</h1>
+		<div class="titlebox">
+				<h1>${loginStaff.username}님 어서오세요.</h1>
+		 </div>
 		  <hr>
 			  <table class="table table-dark">
 			    <thead>
@@ -120,6 +125,12 @@
 			  </table>
 		</div>
 		</div>
+	</div>
+	<div>
+		<a href="#">비밀번호수정</a>
+		<a href="#">e-mail 수정</a>
+		<a href="#">주소 수정</a>
+		<a href="#">지점 수정</a>
 	</div>
 </body>
 </html>

@@ -25,10 +25,10 @@
 	  	<a href="">::: STAFF 관리 :::</a>
 	  </li>
   	  <li class="list-group-item">
-	  	<a href="">STAFF 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/staffList">STAFF 리스트</a>
 	  </li>
 	  <li class="list-group-item">
-	  	<a href="">STAFF 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addStaff">STAFF 추가</a>
 	  </li>
 	  
 	  <li class="list-group-item">

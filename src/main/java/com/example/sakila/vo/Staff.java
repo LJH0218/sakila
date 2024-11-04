@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Staff {
-	private int StaffId; // PK
+	private int staffId; // PK
 	private String firstName;
 	private String lastName;
 	private int addressId; // FK
@@ -14,5 +14,4 @@ public class Staff {
 	private String username;
 	private String password;
 	private String lastUpdate;
-	
 }
