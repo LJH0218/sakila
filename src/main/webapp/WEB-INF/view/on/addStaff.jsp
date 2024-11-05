@@ -6,19 +6,33 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://kit.fontawesome.com/1d692970ae.js" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <style>
-	* {background-color: #212529;}
+	* {background-color: #212529;  -ms-overflow-style: none;}
+	select {border:none; width: 100%; height: 70%; border: 1px solid #333; border-top:none;}
+	 
+	::-webkit-scrollbar {
+	  display: none;
+	}
+	
 	.row *{ padding-left: 0; padding-right: 0;  color:#fff; text-decoration: none;}
 		.col-sm-2{padding: 0 2%; border-right: 1px solid #333;}
 		.col-sm-9{padding: 0 5%;}
 		.titlebox{padding-bottom: 50px;}
 		.main-list{margin-top: 30%;}
 	.list-group-item {border:1px solid #333; padding: 0; }
-	.main-list a {display: block; padding: 5%; color:#666;}
+	.main-list a {display: block; padding: 5%; color:#888;}
+	#searchAddress {width: 85%; display: inline-block; float: left; padding: 1% 0; border: none; background-color: #666;}
+	#btnAddress {width: 15%; display: inline-block; float: right; padding: 1% 0; background-color: #111; border: none; }
 	.main-list li a:hover{background-color: #333; transition:all 0.4s; color:#fff;}
-	
+	#btnAddress i {width: 100%; height: 100%; background-color: #111; padding: 1% 0;}
+
+	#btnAddrSel {margin-top: 3%; padding: 2% 3%; border:1px solid #333; border-radius: 15px }
+	#btnAddrSel:hover {background-color: #333;  transition:all 0.4s;}
+	.col-sm-3 h2{text-align: left;}
 	h2 {padding-bottom: 15px;}
+
 	
 </style>
 <title>Insert title here</title>
@@ -38,13 +52,15 @@
 			</div>
 			
 			<div class="d-flex">
-			<div class="col-sm-3">
+			<div class="col-sm-3 text-center">
 			
 				<h2>주소 검색</h2>
-				<form id ="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
-					<input type="text" name="searchAddress" id="searchAddress">
-					<button type="button" id='btnAddress'>검색하기</button> <!-- 디버깅용으로 submit 확인 끝나면 button태그로 교체해줘야함 -->
-				</form>
+				<div class="formBox">
+					<form id ="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
+						<input type="text" name="searchAddress" id="searchAddress">
+						<button type="button" id='btnAddress'><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 디버깅용으로 submit 확인 끝나면 button태그로 교체해줘야함 -->
+					</form>
+				</div>
 				<select id="resultAddress" size="10">
 					<c:forEach var="a" items="${addressList}">
 						<option value="${a.addressId}">
@@ -142,5 +158,7 @@
 		}
 		
 	});
+	
+	
 </script>
 </html>

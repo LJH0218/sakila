@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.mapper.StaffMapper;
+import com.example.sakila.service.StaffService;
 import com.example.sakila.vo.Staff;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class LoginController {
-	@Autowired private StaffMapper staffMapper;
+	@Autowired StaffService staffService;
 	// 메소드에 직접 매핑 = 다중요청 가능 / 매핑주소 중복 조심(인터페이스 설계에 집중!)
 	// @Autowired private ; 
 	
@@ -54,7 +55,8 @@ public class LoginController {
 			paramStaff.setStaffId(staffId);
 			paramStaff.setPassword(password);
 			
-			Staff loginStaff = staffMapper.login(paramStaff);
+			Staff loginStaff = staffService.login(paramStaff);
+			
 			if(loginStaff == null) {
 				model.addAttribute("msg", "로그인실패");
 				return "/off/login";
