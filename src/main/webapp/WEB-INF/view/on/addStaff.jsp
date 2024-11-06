@@ -6,7 +6,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://kit.fontawesome.com/1d692970ae.js" crossorigin="anonymous"></script>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css'>
 <meta charset="UTF-8">
 <style>
 	* {background-color: #212529;  -ms-overflow-style: none;}
@@ -58,7 +58,7 @@
 				<div class="formBox">
 					<form id ="formAddress" action="${pageContext.request.contextPath}/on/addStaff" method="get">
 						<input type="text" name="searchAddress" id="searchAddress">
-						<button type="button" id='btnAddress'><i class="fa-solid fa-magnifying-glass"></i></button> <!-- 디버깅용으로 submit 확인 끝나면 button태그로 교체해줘야함 -->
+						<button type="button" id='btnAddress'><i class="fi fi-bs-search"></i></button> <!-- 디버깅용으로 submit 확인 끝나면 button태그로 교체해줘야함 -->
 					</form>
 				</div>
 				<select id="resultAddress" size="10">

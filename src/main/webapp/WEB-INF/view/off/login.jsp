@@ -36,11 +36,11 @@
 		<small>${msg}</small>
 		  <div class="mb-3 mt-3 loginbox">
 		    <label class="form-label" for="staffId"> Staff-Num </label>
-		    <input class="form-control" id="staffId" placeholder="Staff-Num" name="staffId" type="text">
+		    <input class="form-control" id="staffId" placeholder="Staff-Num" name="staffId" type="text" value="1">
 		  </div>
 		  <div class="mb-3 loginbox">
 		    <label class="form-label" for="password"> Password </label>
-		    <input  id="password" name="password" placeholder="Password" type="password" class="form-control">
+		    <input  id="password" name="password" placeholder="Password" type="password" class="form-control" value="1234">
 		  </div>
 	  <button id="btn" type="button" class="btn btn-dark justify-content-center">로그인</button>
 	</form>
