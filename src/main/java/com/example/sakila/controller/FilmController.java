@@ -7,11 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.service.ActorService;
 import com.example.sakila.service.FilmService;
+import com.example.sakila.service.LanguageService;
 import com.example.sakila.vo.Actor;
+import com.example.sakila.vo.Film;
+import com.example.sakila.vo.FilmForm;
+import com.example.sakila.vo.Language;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,21 +24,50 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class FilmController {
-	@Autowired FilmService filmservice;
+	@Autowired FilmService filmService;
 	@Autowired ActorService actorService;
+	@Autowired LanguageService languageService;
+	
+	
+	
+	
+	
+	@PostMapping("/on/addFilm")
+	public String addFilm(FilmForm filmForm) {
+		log.debug(filmForm.toString());
+		// filmService : filmForm > film
+		filmService.addFilm(filmForm);
+		
+		return "redirect:/on/filmList";
+		
+	}
+	
+	@GetMapping("/on/addFilm")
+		public String addFilm(Model model){
+			// languageList
+			List<Language> languageList = languageService.getLanguageList();
+			log.debug(languageList.toString());
+			model.addAttribute("languageList",languageList);
+			return "on/addFilm";
+		}
+	
 	
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model
 			, @RequestParam int filmId) {
-		Map<String, Object> film = filmservice.getFilmOne(filmId);
+		Map<String, Object> film = filmService.getFilmOne(filmId);
 		log.debug(film.toString());
-	
+		List<Film> filmList = filmService.getFilmList(filmId);
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);
+		log.debug(filmList.toString());
 		
 		model.addAttribute("film",film);
+		model.addAttribute("filmList", filmList);
 		model.addAttribute("actorList", actorList);
 		
 		
 		return "/on/filmOne";
 	}
+	
+	
 }

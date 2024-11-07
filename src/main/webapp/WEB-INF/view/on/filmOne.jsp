@@ -29,9 +29,55 @@
 			<!-- 메인 컨텐츠 -->
 			<h1>FILM ONE</h1>
 			<div>
-				${film}
+				<c:forEach var="f" items="${filmList}">
+					<table>
+						<tr>
+							<td>Title</td>
+							<td>${f.title}</td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td>${f.description}</td>
+						</tr>
+						<tr>
+							<td>ReleaseYear</td>
+							<td>${f.releaseYear}</td>
+						</tr>
+						<tr>
+							<td>LanguageId</td>
+							<td>${f.languageId}</td>
+						</tr>
+						<tr>
+							<td>RentalDuration</td>
+							<td>${f.rentalDuration}</td>
+						</tr>
+						<tr>
+							<td>RentalRate</td>
+							<td>${f.rentalRate}</td>
+						</tr>
+						<tr>
+							<td>Length</td>
+							<td>${f.length}</td>
+						</tr>
+						<tr>
+							<td>ReplacementCost</td>
+							<td>${f.replacementCost}</td>
+						</tr>
+						<tr>
+							<td>Rating</td>
+							<td>${f.rating}</td>
+						</tr>
+						<tr>
+							<td>SpecialFeatures</td>
+							<td>${f.specialFeatures}</td>
+						</tr>
+					</table>
+				</c:forEach>
+				<%--${film} --%>
 			</div>
-			
+			<div>
+				<a href="">영화 수정</a>
+			</div>
 			<div>
 				<h2>작품에 출연한 배우들</h2>
 				<div>

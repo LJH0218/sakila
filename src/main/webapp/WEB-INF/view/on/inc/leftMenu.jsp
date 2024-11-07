@@ -31,6 +31,16 @@
 	  	<a href="${pageContext.request.contextPath}/on/addStaff">STAFF 추가</a>
 	  </li>
 	  
+  	  <li class="list-group-item">
+	  	<a href="">::: 영화 관리 :::</a>
+	  </li>
+  	  <li class="list-group-item">
+	  	<a href="">영화 리스트</a>
+	  </li>
+	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/addFilm">영화 추가</a>
+	  </li>	 
+	  
 	  <li class="list-group-item">
 	  	<a href="">::: 고객 관리 :::</a>
 	  </li>
@@ -49,6 +59,9 @@
 	  </li>
 	  <li class="list-group-item">
 	  	<a href="${pageContext.request.contextPath}/on/addActor">배우 추가</a>
-	  </li>	 
+	  </li>	
+	  <li class="list-group-item">
+			<a href="">::: 통계 :::</a>  
+	  </li>
 	</ul>
 </div>
