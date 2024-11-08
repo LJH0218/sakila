@@ -28,9 +28,34 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
+	@GetMapping("/on/removeActor")
+	public String removeActor(HttpSession session , @RequestParam int actorId) {
+		String path = session.getServletContext().getRealPath("/upload/");
+		actorService.removeActor(actorId, path);
+		return "redirect:/on/actorList";
+	}
+	
+	
+	@PostMapping("/on/modifyActor")
+	public String modifyActor(Actor actor) {
+		log.debug(actor.toString());
+		int row = actorService.modifyActor(actor);
+		return "redirect:/on/actorOne?actorId="+actor.getActorId();
+	}
+	
+	
+	@GetMapping("/on/modifyActor")
+	public String modifyActor(Model model,@RequestParam int actorId) {
+		Actor actor = actorService.getActorOne(actorId);
+		model.addAttribute("actor",actor);
+		return "on/modifyActor";
+	}
+	
 	@GetMapping("/on/actorOne")
 	public String actorOne(Model model
-			, @RequestParam int actorId) {
+			, @RequestParam int actorId
+			, @RequestParam(defaultValue = "") String searchTitle) {
+		// searchWord=""dlaus actorOne상세보기 요청이고, ""아니면 film검색 요청
 		Actor actor = actorService.getActorOne(actorId);
 		List<ActorFile> actorFileList = actorFileService.getActorFileListByActor(actorId);
 		List<Film> filmList = filmService.getFilmTitleListByActor(actorId);
@@ -38,9 +63,16 @@ public class ActorController {
 		log.debug(actorFileList.toString());
 		log.debug(filmList.toString());
 		
-		model.addAttribute("actor",actor);
-		model.addAttribute("actorFileList",actorFileList);
-		model.addAttribute("filmList",filmList);
+		if(searchTitle.equals("")== false) {
+			// film 검색 결과 리스트를 추가
+			List<Film> searchFilmList = filmService.getFilmListByTitle(searchTitle);
+			model.addAttribute("searchFilmList", searchFilmList);
+			
+		}
+		
+		model.addAttribute("actor", actor);
+		model.addAttribute("actorFileList", actorFileList);
+		model.addAttribute("filmList", filmList);
 		
 		return "on/actorOne";
 

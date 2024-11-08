@@ -9,6 +9,11 @@ import com.example.sakila.vo.Film;
 
 @Mapper
 public interface FilmMapper {
+	
+	// /on/actorOne에서 필름 검색시
+	
+	List<Film> selectFilmListByTitle(String searchTitle);
+	
 	// /on/filmOne
 	List<Film> filmList(int FilmId);
 	

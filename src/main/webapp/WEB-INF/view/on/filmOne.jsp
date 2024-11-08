@@ -27,6 +27,22 @@
 		</div>
 		<div class="col-sm-10">
 			<!-- 메인 컨텐츠 -->
+			
+			<!-- C : 완성 파일
+			C : 1. 필름 상세 정보 
+			1-1) film 수정 - /on/modifyFilm
+			1-2) film 삭제 - /on/removeFilm (film_category삭제 + film_actor삭제 + film삭제)
+			
+			2. film_category 리스트
+			2-1) film_category 추가 /on/addFilmCategory -> 카테고리 전체 목록에서 검색
+			2-2) film_category 삭제 /on/removeFilmCategory
+						
+			C : 3. film_actor 리스트 
+			3-1) film_actor 추가	/on/addFilmByActor -> 필름 검색 후 선택
+			3-2) film_actor 삭제 /on/removeFilmActor 
+			
+			 -->
+			
 			<h1>FILM ONE</h1>
 			<div>
 				<c:forEach var="f" items="${filmList}">
@@ -73,17 +89,23 @@
 						</tr>
 					</table>
 				</c:forEach>
-				<%--${film} --%>
-			</div>
-			<div>
-				<a href="">영화 수정</a>
+				<!-- 영화 수정 및 삭제 -->
+				<div>
+					<a href="">영화 수정</a>
+					<a href="">영화 삭제</a>
+				</div>
 			</div>
 			<div>
 				<h2>작품에 출연한 배우들</h2>
-				<div>
+				<div class="col-sm-8">
 					<c:forEach var = "a" items="${actorList}">
 					<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
-						${a.firstName} ${a.lastName}
+						<table class="table">
+							<tr>
+								<td>${a.firstName} ${a.lastName}</td>
+							</tr>
+						</table>
+						<%-- ${a.firstName} ${a.lastName} --%>
 					</a>
 					</c:forEach>
 					
