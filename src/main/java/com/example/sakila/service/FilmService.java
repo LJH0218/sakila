@@ -19,7 +19,18 @@ import com.example.sakila.vo.FilmForm;
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
 	
+	public int getTotalCount(int rowPerPage,Integer categoryId) {
+		int count = filmMapper.selectFilmCount(categoryId);
+		int lastPage = count / rowPerPage;
+		if(count % rowPerPage != 0) {
+			lastPage ++; 
+		}
+	return lastPage;
+	  
+	}
 
+	
+	
 	public List<Map<String, Object>> getFilmList(Integer categoryId ,int currentPage, int rowPerPage){
 		
 		Map<String, Object> paramMap = new HashMap<>();
@@ -29,7 +40,7 @@ public class FilmService {
 			paramMap.put("categoryId", categoryId);
 		}
 		
-		int beginRow = (1 - currentPage) * rowPerPage;
+		int beginRow = (currentPage-1) * rowPerPage;
 		paramMap.put("beginRow",beginRow);
 		paramMap.put("rowPerPage",rowPerPage);
 		

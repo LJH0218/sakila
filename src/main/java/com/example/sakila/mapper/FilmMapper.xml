@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
+
+	<select id="selectFilmCount" parameterType="com.example.sakila.vo.Category" resultType="int">
+		SELECT count(*)
+		FROM film f INNER JOIN film_category fc
+		ON f.film_id = fc.film_id
+		<where>
+			<if test="categoryId != null">
+				fc.category_id = #{categoryId}
+			</if>
+		</where>
+	</select>
 	<!-- categoryId가 null, 혹은 0이 아닐때 -->	
 	<select id="selectFilmListByCategory" parameterType="Map" resultType="Map">
 		 SELECT

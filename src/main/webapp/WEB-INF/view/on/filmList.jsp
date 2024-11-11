@@ -100,7 +100,7 @@
 						<!-- 페이징 박스[다음] - 분기코드 시작 -->
 						<c:if test="${currentPage >= 1}">
 							<li class="page-item col-sm-3">
-								<a href="${pageContext.request.contextPath}/on/filmList?currentPage=${lastPage}&categoryId=${currentCategoryId}">다음</a>
+								<a href="${pageContext.request.contextPath}/on/filmList?currentPage=${currentPage+1}&categoryId=${currentCategoryId}">다음</a>
 							</li>
 						</c:if>
 						<!-- 페이징 박스[다음] - 분기코드 종료 -->

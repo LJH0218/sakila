@@ -40,6 +40,8 @@ public class FilmController {
 			, @RequestParam(defaultValue = "1") int currentPage
 			, @RequestParam(defaultValue = "10") int rowPerPage) {// null이 넘어올수도있고 category가 넘어올수도 있으면 requestMapping을 쓴다
 		
+		
+		int lastPage = filmService.getTotalCount(rowPerPage, categoryId);
 		// 디버깅
 		log.debug("categoryId :" + categoryId);
 		log.debug("currentPage :" + currentPage);
@@ -49,7 +51,7 @@ public class FilmController {
 		//디버깅
 		log.debug("filmList :" + filmList);
 		model.addAttribute("filmList", filmList);
-		
+		model.addAttribute("lastPage", lastPage);
 		
 		// model에 category List 출력
 		
