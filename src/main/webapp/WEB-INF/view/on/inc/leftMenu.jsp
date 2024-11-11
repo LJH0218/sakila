@@ -15,10 +15,22 @@
 	  <a href="">::: 지점 관리 :::</a>
 	  </li>
   	  <li class="list-group-item">
-	  	<a href="">지점 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/storeList">지점 리스트</a>
+		<!-- 
+			StoreMapper.selectStoreList() : List<Map> - store x staff x address
+		 	StoreServie.getStoreList() : List<Map>
+		 	/on/storeList - SoreController.storeList() - storeList.jsp
+		 -->
 	  </li>
 	  <li class="list-group-item">
-	  	<a href="">지점 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addStore">지점 추가</a>
+	  	<!-- 
+	  		GET - /on/addStore
+	  		- storeController.addStore() : staffList 모델추가, search주소 검색결과 모델추가 - addStore.jsp
+	  		StoreMapper.insertStore() : Integer
+	  		StoreService.addStore() : Integer
+	  		POST - /on/addStore - StoreController.addStore(Store)
+	  	 -->
 	  </li>  
 	  
 	  <li class="list-group-item">
@@ -34,11 +46,17 @@
   	  <li class="list-group-item">
 	  	<a href="">::: 영화 관리 :::</a>
 	  </li>
-  	  <li class="list-group-item">
-	  	<a href="">영화 리스트</a>
+   	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/languageList">언어 리스트</a>
 	  </li>
 	  <li class="list-group-item">
-	  	<a href="${pageContext.request.contextPath}/on/addFilm">영화 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addLanguage">언어 추가</a>
+	  </li>	 
+  	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/filmList">필름 리스트</a>
+	  </li>
+	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/addFilm">필름 추가</a>
 	  </li>	 
 	  
 	  <li class="list-group-item">

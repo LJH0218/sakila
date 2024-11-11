@@ -1,5 +1,6 @@
 package com.example.sakila.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.sakila.mapper.CategoryMapper;
 import com.example.sakila.mapper.FilmMapper;
+import com.example.sakila.vo.Actor;
 import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
 
@@ -15,6 +18,29 @@ import com.example.sakila.vo.FilmForm;
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	
+
+	public List<Map<String, Object>> getFilmList(Integer categoryId ,int currentPage, int rowPerPage){
+		
+		Map<String, Object> paramMap = new HashMap<>();
+		if(categoryId == null || categoryId == 0) {
+			paramMap.put("category", null);
+		}else {
+			paramMap.put("categoryId", categoryId);
+		}
+		
+		int beginRow = (1 - currentPage) * rowPerPage;
+		paramMap.put("beginRow",beginRow);
+		paramMap.put("rowPerPage",rowPerPage);
+		
+		
+		if(paramMap.get("categoryId") == null) {
+			return	filmMapper.selectFilmList(paramMap);
+		}else {
+			return	filmMapper.selectFilmListByCategory(paramMap);
+		}
+		
+	}
 	
 	public List<Film> getFilmListByTitle(String searchWord){
 		return filmMapper.selectFilmListByTitle(searchWord);

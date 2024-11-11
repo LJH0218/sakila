@@ -31,7 +31,8 @@
 			<!-- C : 완성 파일
 			C : 1. 필름 상세 정보 
 			1-1) film 수정 - /on/modifyFilm
-			1-2) film 삭제 - /on/removeFilm (film_category삭제 + film_actor삭제 + film삭제)
+			1-2) film 삭제 - /on/removeFilm
+			(inventory 렌탈 정보 확인 + film_category삭제 + film_actor삭제 + film삭제)
 			
 			2. film_category 리스트
 			2-1) film_category 추가 /on/addFilmCategory -> 카테고리 전체 목록에서 검색
@@ -40,6 +41,8 @@
 			C : 3. film_actor 리스트 
 			3-1) film_actor 추가	/on/addFilmByActor -> 필름 검색 후 선택
 			3-2) film_actor 삭제 /on/removeFilmActor 
+			
+			4. inventory 정보
 			
 			 -->
 			
