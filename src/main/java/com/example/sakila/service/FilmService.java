@@ -9,15 +9,37 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.sakila.mapper.CategoryMapper;
+import com.example.sakila.mapper.FilmActorMapper;
+import com.example.sakila.mapper.FilmCategoryMapper;
 import com.example.sakila.mapper.FilmMapper;
 import com.example.sakila.vo.Actor;
 import com.example.sakila.vo.Film;
 import com.example.sakila.vo.FilmForm;
+import com.example.sakila.vo.Staff;
 
 @Service
 @Transactional
 public class FilmService {
 	@Autowired FilmMapper filmMapper;
+	@Autowired FilmActorMapper filmActorMapper;
+	@Autowired FilmCategoryMapper filmCategoryMapper;
+
+
+	public int modifyFilm(Film paramFilm) {
+		return filmMapper.updateFilm(paramFilm);
+	}
+
+	
+	public void removeFilmByKey(Integer filmId) {
+		// 필름 카테고리 삭제 /  필름 배우 삭제 / 필름 삭제 > 하나라도 실패하면 롤백
+		
+		// 1) 필름_카테고리 삭제
+		filmCategoryMapper.deleteFilmCategoryByFilm(filmId);
+		// 2) 필름_배우 삭제
+		filmActorMapper.deleteFilmActorByFilm(filmId);
+		// 3) 필름 삭제
+		filmMapper.deleteFilmByKey(filmId);
+	}
 	
 	public int getTotalCount(int rowPerPage,Integer categoryId) {
 		int count = filmMapper.selectFilmCount(categoryId);

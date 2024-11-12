@@ -30,11 +30,11 @@
 			
 			<!-- C : 완성 파일
 			C : 1. 필름 상세 정보 
-			1-1) film 수정 - /on/modifyFilm
-			1-2) film 삭제 - /on/removeFilm
+			C : 1-1) film 수정 - /on/modifyFilm
+			C : 1-2) film 삭제 - /on/removeFilm
 			(inventory 렌탈 정보 확인 + film_category삭제 + film_actor삭제 + film삭제)
 			
-			2. film_category 리스트
+		 	C : 2.film_category 리스트
 			2-1) film_category 추가 /on/addFilmCategory -> 카테고리 전체 목록에서 검색
 			2-2) film_category 삭제 /on/removeFilmCategory
 						
@@ -93,19 +93,65 @@
 					</table>
 				</c:forEach>
 				<!-- 영화 수정 및 삭제 -->
+				
 				<div>
-					<a href="">영화 수정</a>
-					<a href="">영화 삭제</a>
-				</div>
-			</div>
+					<a href="${pageContext.request.contextPath}/on/modifyFilm?filmId=${film.filmId}">영화 수정</a>
+					<a href="${pageContext.request.contextPath}/on/removeFilm?filmId=${film.filmId}">영화 삭제</a>
+					<span class="text-danger">${removeFilmMsg}</span>
+				</div>			
+			</div>		
+
+			<br>
 			<div>
 				<h2>작품에 출연한 배우들</h2>
+				
+			
+	
+				<h2>작품 장르_CATEGORY</h2>
+				<form action="post">
+					<select name="categoryId" id="categoryId">
+						<option value="">카테고리 선택</option>
+						<!-- 모델 카테고리리스트 -->
+						<c:forEach var="ac" items="${allCategoryList}">
+							<option value="${ac.categoryId}">${ac.name}</option>
+							
+						</c:forEach>
+					</select>
+					<button type="button">현재필름 카테고리 추가</button>
+				</form>
+				<div>
+					<c:forEach var="fc" items="${filmCategoryList}">
+						<div>
+							${fc.name}
+							&nbsp;
+							<a href="">삭제</a>
+						</div>
+					</c:forEach>
+				</div>
+				
 				<div class="col-sm-8">
+
+			<div>
+				<form method="post" action="">
+					<input type="text" name="searchName">
+					<button type="button">이름검색</button>
+				</form>
+				
+				
+				
+				<form method="post" action="">
+					<select name="actorId" id="actorId" size="5">
+						<option value="">배우 선택</option>
+						
+					</select>
+				</form>
+				
+				
 					<c:forEach var = "a" items="${actorList}">
 					<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
 						<table class="table">
 							<tr>
-								<td>${a.firstName} ${a.lastName}</td>
+								<td>${a.firstName} ${a.lastName}</td> &nbsp; <a href="">삭제</a>
 							</tr>
 						</table>
 						<%-- ${a.firstName} ${a.lastName} --%>
@@ -113,6 +159,7 @@
 					</c:forEach>
 					
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

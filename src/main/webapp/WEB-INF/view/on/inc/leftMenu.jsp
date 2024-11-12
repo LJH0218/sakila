@@ -42,10 +42,16 @@
 	  <li class="list-group-item">
 	  	<a href="${pageContext.request.contextPath}/on/addStaff">STAFF 추가</a>
 	  </li>
-	  
+	  <!-- 영화관리 부분 -->
   	  <li class="list-group-item">
 	  	<a href="">::: 영화 관리 :::</a>
 	  </li>
+   	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/categoryList">카테고리 리스트</a>
+	  </li>
+	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/addCategory">카테고리 추가</a>
+	  </li>	 
    	  <li class="list-group-item">
 	  	<a href="${pageContext.request.contextPath}/on/languageList">언어 리스트</a>
 	  </li>

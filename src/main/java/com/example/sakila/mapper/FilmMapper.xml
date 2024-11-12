@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.FilmMapper">
-
+	<update id="updateFilm" parameterType="com.example.sakila.vo.Film">
+										<!-- 참조 NULL 숫자 0 flase 디폴트값 -->
+		UPDATE film
+		<set>
+			<if test="title != null"> <!-- jstl에선 test = #{title != null} mybatis에선 #{} 생략 -->
+				title = #{title}
+			</if>
+			<if test="description != null">
+				description = #{description}
+			</if>
+			<if test="releaseYear != 0">
+				release_year = #{releaseYear}
+			</if>
+			<if test="languageId != 0">
+				language_id = #{languageId}
+			</if>
+			<if test="originalLanguageId != 0">
+				original_language_id = #{originalLanguageId}
+			</if>
+			<if test="rentalDuration != 0">
+				rental_duration = #{rentalDuration}
+			</if>
+			<if test="rentalRate != 0">
+				rental_rate = #{rentalRate}
+			</if>
+			<if test="length != 0">
+				length = #{length}
+			</if>
+			<if test="replacementCost != 0">
+				replacement_cost = #{replacementCost}
+			</if>
+			<if test="rating != null">
+				rating = #{rating}
+			</if>
+			<if test="specialFeatures != null">
+				special_features = #{specialFeatures}
+			</if>
+		</set>
+		WHERE film_id = #{filmId}
+	</update>
+	
+	<delete id="deleteFilmByKey" parameterType="Integer">
+		DELETE FROM film
+		WHERE film_id = #{filmId}
+	</delete>
+	
 	<select id="selectFilmCount" parameterType="com.example.sakila.vo.Category" resultType="int">
 		SELECT count(*)
 		FROM film f INNER JOIN film_category fc
