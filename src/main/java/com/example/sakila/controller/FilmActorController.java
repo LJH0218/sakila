@@ -18,9 +18,18 @@ import com.example.sakila.vo.FilmActor;
 public class FilmActorController {
 	@Autowired FilmActorService filmActorService;
 	
+	@GetMapping("/on/removeFilmActorByFilm")
+	public String removeFilmActorByFilm(FilmActor filmActor){
+		log.debug("filmId: "+filmActor.getFilmId());
+		log.debug("actorId: "+filmActor.getActorId());
+		
+		int row = filmActorService.removeFilmActor(filmActor);
+		
+		return "redirect:/on/actorOne?actorId="+filmActor.getFilmId();
+	}
 	
-	@GetMapping("/on/removeFilmActor")
-	public String removeFilmByActor(FilmActor filmActor){
+	@GetMapping("/on/removeFilmActorByActor")
+	public String removeFilmActorByActor(FilmActor filmActor){
 		log.debug("filmId: "+filmActor.getFilmId());
 		log.debug("actorId: "+filmActor.getActorId());
 		

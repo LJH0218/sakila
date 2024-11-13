@@ -127,7 +127,7 @@
 						<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}" class="btn">${f.title}</a>&nbsp;
 						
 						&nbsp;
-						<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" class="btn">FILM_ACTOR에서 삭제</a>
+						<a href="${pageContext.request.contextPath}/on/removeFilmActorByActor?filmId=${f.filmId}&actorId=${actor.actorId}" class="btn">FILM_ACTOR에서 삭제</a>
 					</div>
 				</c:forEach>
 			</div>

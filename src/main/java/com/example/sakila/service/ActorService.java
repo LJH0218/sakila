@@ -29,6 +29,10 @@ public class ActorService {
 	@Autowired ActorFileMapper actorFileMapper;
 	@Autowired FilmActorMapper filmActorMapper;
 	
+	public List<Actor> getActorListByActor(String searchName){
+		return actorMapper.selectActorListByActor(searchName);
+	}
+	
 	public void removeActor(int actorId, String path) {
 		// 1) filmActor 삭제
 		filmActorMapper.deleteFileByActor(actorId);

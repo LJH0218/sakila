@@ -41,6 +41,9 @@ public class FilmController {
 	@Autowired FilmCategoryService filmCategoryService;
 	
 	
+	
+	
+	
 	@PostMapping("/on/modifyFilm")
 	public String modifyFilm(Film film){
 		
@@ -169,7 +172,11 @@ public class FilmController {
 		List<Category> allCategoryList = categoryService.getCategoryList();
 		// 3.
 		List<Map<String, Object>> filmCategoryList = filmCategoryService.getFilmCategoryListByFilm(filmId);
-		
+		// 4.
+			if(searchName != null) {// 배우이름검색 버튼요청으로 왔다면
+				List<Actor> searchActorList = actorService.getActorListByActor(searchName);
+				model.addAttribute("searchActorList",searchActorList);
+			}
 		// 5.
 		List<Actor> actorList = actorService.getActorListByFilm(filmId);
 		log.debug(filmList.toString());

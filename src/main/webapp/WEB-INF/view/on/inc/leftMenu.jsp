@@ -32,6 +32,9 @@
 	  		POST - /on/addStore - StoreController.addStore(Store)
 	  	 -->
 	  </li>  
+   	  <li class="list-group-item">
+	  	<a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 리스트</a>
+	  </li>
 	  
 	  <li class="list-group-item">
 	  	<a href="">::: STAFF 관리 :::</a>
