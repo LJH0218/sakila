@@ -33,17 +33,22 @@
 					<td>inventoryId</td>
 					<td>filmId(title)</td>
 					<td>lastUpdate</td>
+					<td>인벤토리 삭제</td>
 				</tr>
 				<c:forEach var="iv" items="${inventoryList}">
 					<tr>
 						<td>${iv.inventoryId}</td>
-						<td>${iv.filmId}</td>
 						<td>
 							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
 							(${iv.filmId}) ${iv.title}
 							</a>
 						</td>
 						<td>${iv.lastUpdate}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/removeInventory?inventoryId="${iv.inventoryId}>
+								인벤토리 삭제
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
 				

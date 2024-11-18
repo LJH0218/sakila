@@ -9,16 +9,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.sakila.service.FilmService;
 import com.example.sakila.service.InventoryService;
+import com.example.sakila.vo.Film;
+import com.example.sakila.vo.Inventory;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Slf4j
 @Controller
 public class InventoryController {
 	@Autowired InventoryService inventoryService;
+	@Autowired FilmService filmService;
+	
 	
 //	@GetMapping
+	
+	@PostMapping("/on/addInventory")
+	public String addInventory(Inventory inventory) {
+		inventoryService.addInventory(inventory);
+		
+		return "redirect:/on/inventoryList?storeId="+inventory.getStoreId();
+	}
+	
 	
 	@GetMapping("/on/addInventory")
 	public String addInventory(Model model
@@ -30,11 +46,13 @@ public class InventoryController {
 		model.addAttribute("storeId", storeId);
 		
 		
-		// 검색 기능
+		// 검색 기능 / btnSearchTitle로 들어왔다면
 		if(searchTitle != null && !searchTitle.equals("")) {
-			//영화 검색 목록 모델에 추가
-			
-			
+			//영화 검색 목록 모델에 추가(배우에 영화추가할때 이미 구현)
+			log.debug("searchTitle : "+ searchTitle);
+			List<Film> filmList = filmService.getFilmListByTitle(searchTitle);
+			model.addAttribute("filmList",filmList);
+			model.addAttribute("searchTitle",searchTitle);
 		}			
 		
 		return "on/addInventory";
