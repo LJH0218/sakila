@@ -20,6 +20,27 @@ public class InventoryController {
 	
 //	@GetMapping
 	
+	@GetMapping("/on/addInventory")
+	public String addInventory(Model model
+							, @RequestParam Integer storeId
+							, @RequestParam(required = false) String searchTitle) { // 검색용 searchTitle을 넘겨받음
+
+		
+		// 편의 상 storeId를 모델에 담아서 넘겨줌
+		model.addAttribute("storeId", storeId);
+		
+		
+		// 검색 기능
+		if(searchTitle != null && !searchTitle.equals("")) {
+			//영화 검색 목록 모델에 추가
+			
+			
+		}			
+		
+		return "on/addInventory";
+	}
+	
+	
 	@GetMapping("/on/inventoryList")
 	public String inventoryList(Model model
 			, @RequestParam Integer storeId 

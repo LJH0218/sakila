@@ -16,7 +16,7 @@
 	.main-list a {display: block; padding: 5%; color:#666;}
 	.main-list li a:hover{background-color: #333; transition:all 0.4s; color:#fff;}
 </style>
-<title>store List</title>
+<title>Insert title here</title>
 </head>
 
 <body class="container-flud">
@@ -27,23 +27,17 @@
 		</div>
 		<div class="col-sm-10">
 			<!-- 메인 컨텐츠 -->
-			<h1>Store List</h1>
-			<table class="table">
-				<tr>
-					<td>storeId</td>
-					<td>인벤토리 리스트</td>
-					<td>인벤토리 추가</td>
-				</tr>
-				<c:forEach var="s" items="${storeList}">
-					<tr>
-						<td>${s.storeId}</td>
-						<td><a href="${pageContext.request.contextPath}/on/inventoryList?storeId=${s.storeId}">인벤토리 리스트</a></td>
-						<td>
-							<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${s.storeId}">인벤토리 추가</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
+			<h1>인벤토리 추가</h1>
+				<form action="">
+					<table class="table">
+						<tr>
+							<td>storeId</td>
+							<td>
+								<input type="text" name="storeId" value="${storeId}" readonly>
+							</td>
+						</tr>
+					</table>
+				</form>
 			
 		</div>
 	</div>

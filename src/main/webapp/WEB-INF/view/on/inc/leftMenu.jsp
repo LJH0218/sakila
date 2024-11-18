@@ -12,7 +12,7 @@
 	  </li>
 	  
    	  <li class="list-group-item">
-	  <a href="">::: 지점 관리 :::</a>
+	  <a href="">::: 지점&인벤토리 관리 :::</a>
 	  </li>
   	  <li class="list-group-item">
 	  	<a href="${pageContext.request.contextPath}/on/storeList">지점 리스트</a>
@@ -32,10 +32,7 @@
 	  		POST - /on/addStore - StoreController.addStore(Store)
 	  	 -->
 	  </li>  
-   	  <li class="list-group-item">
-	  	<a href="${pageContext.request.contextPath}/on/addInventory">인벤토리 리스트</a>
-	  </li>
-	  
+
 	  <li class="list-group-item">
 	  	<a href="">::: STAFF 관리 :::</a>
 	  </li>
