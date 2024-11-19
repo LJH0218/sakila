@@ -10,6 +10,10 @@ import com.example.sakila.vo.Customer;
 @Mapper
 public interface CustomerMapper {
 	
+	List<Map<String, Object>> selectCustomerOneList(Integer customerId);
+	
+	List<Customer> selectCustomerListByName(String searchName);
+	
 	Integer selectCustomerCount();
 	
 	List<Customer> selectCustomerList(Map<String, Object> paramMap);

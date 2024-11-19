@@ -75,11 +75,11 @@ public class InventoryController {
 		log.debug("lastPage"+lastPage);
 		
 		List<Map<String, Object>> inventoryList = inventoryService.getInventoryListByStore(storeId, currentPage, rowPerPage);
-		model.addAttribute("inventoryList",inventoryList);
-		model.addAttribute("storeId",storeId);
+		model.addAttribute("inventoryList", inventoryList);
+		model.addAttribute("storeId", storeId);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("rowPerPage",rowPerPage);
-		model.addAttribute("lastPage",lastPage);
+		model.addAttribute("rowPerPage", rowPerPage);
+		model.addAttribute("lastPage", lastPage);
 		
 		
 		return "on/inventoryList";

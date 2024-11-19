@@ -44,7 +44,7 @@
 				<tr>
 					<td>
 						<!-- 고객 상세 정보 -->
-						<a href="">
+						<a href="${pageContext.request.contextPath}/on/customerOne?customerId=${c.customerId}">
 							${c.customerId}
 						</a>
 					</td>
@@ -79,11 +79,16 @@
 				</a>
 			--%>
 				
-				<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage-10}">
-					[이전]
-				</a> 
+	
 				
+	
+				<c:if test="${currentPage > 10}">
+					<a href="${pageContext.request.contextPath}/on/customerList?currentPage=${currentPage-10}">
+						[이전]
+					</a> 
+				</c:if>				
 				<c:forEach var="num" begin="${startPagingNum}" end="${endPagingNum}">
+
 					<c:if test="${num == currentPage}">
 						${num}&nbsp;
 					</c:if>

@@ -1,3 +1,4 @@
+
 package com.example.sakila.service;
 
 import java.util.HashMap;
@@ -19,6 +20,20 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	
+	public List<Map<String, Object>> getcustomerOneList(Integer customerId) {
+		
+		
+		List<Map<String, Object>> customerOneList = customerMapper.selectCustomerOneList(customerId);
+		
+
+		return customerOneList;
+	}
+	
+	public List<Customer> getCustomerListByName(String searchName) {
+		return customerMapper.selectCustomerListByName(searchName);
+	}
+	
 	public Integer getLastPage(Integer rowPerPage) {
 		
 		int	count = customerMapper.selectCustomerCount();
@@ -29,6 +44,7 @@ public class CustomerService {
 		
 		return lastPage; 
 	}
+	
 	
 	public Map<String, Object> getCustomerList(Integer currentPage, Integer rowPerPage){
 		Integer beginRow = (currentPage - 1) * rowPerPage;
@@ -62,6 +78,7 @@ public class CustomerService {
 		
 		return resultMap;
 	}
+
 	
 	public Integer addCustomer(Customer customer) {
 		return customerMapper.insertCustomer(customer);

@@ -2,6 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.CustomerMapper">
 	
+	<!-- /on/customerOne -->
+	
+	<select id="selectCustomerOneList" parameterType="map" resultType="map">
+		SELECT r.rental_id rentalId
+				, c.customer_id customerId
+				, c.first_name firstName
+				, c.last_name lastName
+				, i.inventory_id inventoryId
+				, f.title title
+				, r.return_date returnDate
+		FROM rental r INNER JOIN customer c
+		ON r.customer_id = c.customer_id
+			INNER JOIN inventory i
+			ON r.inventory_id = i.inventory_id
+			INNER JOIN film f
+			ON i.film_id = f.film_id
+		WHERE r.customer_id = #{customerId}
+		ORDER BY rental_date DESC
+	</select>
+	
+	<!-- /on/addRental -->
+	<select  id="selectCustomerListByName" parameterType="String" resultType="com.example.sakila.vo.Customer">
+			SELECT
+			 customer_id customerId
+			, first_name firstName
+			, last_name lastName
+			, email email
+		FROM customer
+		WHERE ACTIVE = 1 AND
+		LOWER (CONCAT(first_name, last_name)) LIKE CONCAT('%',LOWER(#{searchName}),'%')
+	</select>
+	
 	<select id="selectCustomerCount">
 		SELECT count(*)
 		FROM customer
