@@ -29,7 +29,7 @@
 		<div class="col-sm-10">
 			<!-- 메인 컨텐츠 -->
 			<h1>인벤토리 추가</h1>
-			<div>
+		<div>
 			<form id="formSearchTitle" method="get" action="${pageContext.request.contextPath}/on/addInventory">
 				<input type="hidden" name="storeId" value="${storeId}"> <!-- storeId를 hidden값으로 넘겨줌 -->
 				<input type="text" id="searchTitle" name="searchTitle" placeholder="영화제목검색" value="${searchTitle}">

@@ -69,10 +69,10 @@
 	  	<a href="">::: 고객 관리 :::</a>
 	  </li>
   	  <li class="list-group-item">
-	  	<a href="">고객 리스트</a>
+	  	<a href="${pageContext.request.contextPath}/on/customerList">고객 리스트</a>
 	  </li>
 	  <li class="list-group-item">
-	  	<a href="">고객 추가</a>
+	  	<a href="${pageContext.request.contextPath}/on/addCustomer">고객 추가</a>
 	  </li>	 
 	  
   	  <li class="list-group-item">

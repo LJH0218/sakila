@@ -28,6 +28,7 @@
 		<div class="col-sm-10">
 			<!-- 메인 컨텐츠 -->
 			<h1>Store List</h1>
+			
 			<table class="table">
 				<tr>
 					<td>storeId</td>

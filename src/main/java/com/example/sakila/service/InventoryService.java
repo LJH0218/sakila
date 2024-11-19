@@ -14,6 +14,11 @@ import com.example.sakila.vo.Inventory;
 public class InventoryService {
 	@Autowired InventoryMapper inventoryMapper;
 	
+	
+	public Integer removeInventoryByKey(Integer inventoryId) {
+		return inventoryMapper.deleteInventoryByKey(inventoryId);
+	}
+	
 	public Integer addInventory(Inventory inventory) {
 		return inventoryMapper.insertInventory(inventory);
 	}
